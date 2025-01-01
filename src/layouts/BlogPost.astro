@@ -6,31 +6,31 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { getUrl } from '../utils/url';
 
-type Props = CollectionEntry<'blog'>['data'];
+interface Props extends CollectionEntry<'blog'>['data'] {}
 
 const {
-	title,
-	subtitle,
-	description = '',
-	created_date,
-	updated_date,
-	featured_image,
-	featured_image_alt,
-	tags = [],
-	meta_title,
-	meta_description,
-	canonical_url,
-	og_title,
-	og_description,
-	og_image,
-	og_type,
-	twitter_title,
-	twitter_description,
-	twitter_image,
-	twitter_card,
-	keywords,
-	author,
-	no_index,
+    title,
+    subtitle,
+    description = '',
+    created_date,
+    updated_date,
+    featured_image,
+    featured_image_alt,
+    tags = [],
+    meta_title,
+    meta_description,
+    canonical_url,
+    og_title,
+    og_description,
+    og_image,
+    og_type,
+    twitter_title,
+    twitter_description,
+    twitter_image,
+    twitter_card,
+    keywords,
+    author,
+    no_index,
 } = Astro.props;
 
 const safeTags = tags ?? [];
@@ -119,6 +119,12 @@ const safeTags = tags ?? [];
 				color: rgb(var(--accent));
 				transform: translateY(-2px);
 			}
+			:global(.mermaid) {
+				background: rgb(248, 250, 252);
+				padding: 1.5rem;
+				border-radius: 0.5rem;
+				margin: 1rem 0;
+			}
 		</style>
 	</head>
 
@@ -161,5 +167,14 @@ const safeTags = tags ?? [];
 			</article>
 		</main>
 		<Footer />
+		<script>
+			import mermaid from 'mermaid';
+			document.addEventListener('astro:page-load', () => {
+				mermaid.initialize({ 
+					startOnLoad: true,
+					theme: 'default'
+				});
+			});
+		</script>
 	</body>
 </html>

@@ -18,4 +18,5 @@ pnpm-debug.log*
 .DS_Store
 
 # Astro
-.astro/ 
+.astro/ src/content/blog/*
+.astro/
